@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    container_name: postgres
+    environment:
+      DB_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      APP_USER: app
+      APP_USER_PWD: secret
+      APP_DB_NAME: newsletter
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d/
